@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div layout="column" ng-cloak>
+    <md-content>
+        <h4 class="md-headline">{{WelcomeNote}}</h4>
+        <form>
+            <section layout="row" layout-align="center start">
+                <md-icon>my_location</md-icon>
+                <md-autocomplete flex="95" md-selected-item="selectedItem"
+                                 md-search-text-change="searchTextChange(searchText)"
+                                 md-search-text="searchText"
+                                 md-selected-item-change="selectedItemChange(item)"
+                                 md-items="item in querySearch(searchText)"
+                                 md-item-text="item.display"
+                                 md-min-length="0"
+                                 placeholder="Choose your starting point">
+                    <md-item-template>
+                        <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No states matching "{{searchText}}" were found.
+                        <a ng-click="newState(searchText)">Create a new one!</a>
+                    </md-not-found>
+                </md-autocomplete>
+            </section>
+            <section layout="row" layout-align="center start">
+                <md-icon>add_location</md-icon>
+                <md-autocomplete flex="95" md-selected-item="selectedItem"
+                                 md-search-text-change="searchTextChange(searchText2)"
+                                 md-search-text="searchText2"
+                                 md-selected-item-change="selectedItemChange(item)"
+                                 md-items="item in querySearch(searchText2)"
+                                 md-item-text="item.display"
+                                 md-min-length="0"
+                                 placeholder="Choose your Destination">
+                    <md-item-template>
+                        <span md-highlight-text="searchText2" md-highlight-flags="^i">{{item.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        No states matching "{{searchText2}}" were found.
+                        <a ng-click="newState(searchText2)">Create a new one!</a>
+                    </md-not-found>
+                </md-autocomplete>
+            </section>
+            <section layout-align="right start">
+                <md-datepicker ng-model="DepartDate" md-placeholder="Depart date" md-open-on-focus></md-datepicker>
+                <md-button ng-click="showSimpleToast()" class="md-warn md-raised md-hue-3">
+                    <md-icon>transfer_within_a_station</md-icon>
+                    <label>Calculate</label>
+                </md-button>
+            </section>
+        </form>
+    </md-content>
+</div>
+@*<md-progress-circular ng-disabled="!vm.activated" md-diameter="96"></md-progress-circular>*@
