@@ -1,0 +1,109 @@
+﻿
+@{
+    Layout = null;
+}
+
+<md-dialog aria-label="Mango (Fruit)">
+    <form name="user" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{DataRecieved}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content" ng-if="DataRecieved === 'Sign In'">
+                Welcome! Please sign in to continue.
+                <md-input-container class="md-block">
+                    <!-- Use floating placeholder instead of label -->
+                    <md-icon>email</md-icon>
+                    <input ng-model="email" name="email" type="email" placeholder="Email (required)" ng-required="true">
+                    <div ng-messages="user.email" role="alert">
+                        <div ng-message="$invalid" class="my-message">Valid email is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Password (required)</label>
+                    <md-icon>https</md-icon>
+                    <input ng-model="password" name="password" type="password" ng-required="true">
+                    <div ng-messages="user.password.$error" role="alert">
+                        <div ng-message="required" class="my-message">Password is required</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised md-primary">Sign in</md-button>
+            </div>
+            <div class="md-dialog-content" ng-if="DataRecieved === 'Sign Up'">
+                Welcome! Please register to continue.
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Name</label>
+                    <md-icon>person</md-icon>
+                    <input ng-model="name" name="name" type="text" ng-required="true" ng-minlength="4" md-maxlength="50" ng-pattern="/^[a-zA-Z\s]*$/">
+                    <div ng-messages="user.name.$error" role="alert" multiple>
+                        <div ng-message="minlength" class="my-message">Name can not be less than 4 letters</div>
+                        <div ng-message="required" class="my-message">You must supply a Name</div>
+                        <div ng-message="pattern" class="my-message">Name can only contain alphabets</div>
+                        <div ng-message="md-maxlength" class="my-message">We allow only 50 letters for Name</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container md-no-float class="md-block">
+                    <md-icon>phone</md-icon>
+                    <input ng-model="user.phone" type="text" placeholder="Phone Number">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <!-- Use floating placeholder instead of label -->
+                    <md-icon>email</md-icon>
+                    <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Password</label>
+                    <md-icon>https</md-icon>
+                    <input ng-model="password" name="password" type="password" ng-required="true" ng-minlength="8" md-maxlength="128" ng-pattern="/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/">
+                    <div ng-messages="user.password.$error" role="alert">
+                        <div ng-message="minlength" class="my-message">Password can not be less than 8 letters</div>
+                        <div ng-message="required" class="my-message">You must supply a password</div>
+                        <div ng-message="md-maxlength" class="my-message">We allow only 128 letters for password</div>
+                        <div ng-message="pattern" class="my-message">Password should have UpperCase, LowerCase, Number/SpecialChar</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Enter the password again</label>
+                    <md-icon>repeat_one</md-icon>
+                    <input ng-model="password2" name="password2" type="password" ng-required="true" ng-pattern="{{password}}">
+                    <div ng-messages="user.password2.$error" role="alert">
+                        <div ng-message="required" class="my-message">You must confirm your password</div>
+                        <div ng-message="pattern" style="color:coral" class="my-message">Keep typing until both the password matches</div>
+                    </div>
+                </md-input-container>
+                <md-input-container md-no-float class="md-block">
+                    <input ng-model="user.address" type="text" placeholder="Address">
+                    <md-icon>place</md-icon>
+                </md-input-container>
+                <md-button class="md-raised md-warn">Register</md-button>
+                <p style="font-size:.8em; width: 100%; text-align: center;">
+                    By registering with us, you accept to our terms of service.
+                </p>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="showAlert({Type: 'Terms of service', Description: 'We keep your data safe.'})" md-autofocus>
+                Terms of service
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="showPrompt({title: 'What would you like to donate?', textContent: 'We grow with donations', placeholder: 'Amount in rupees', ariaLabel: 'Donation Amount', initialValue: 500})">
+                Donate <md-icon>euro_symbol</md-icon>
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+

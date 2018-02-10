@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html ng-app="EasyTicket">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <base href="@Url.Content("~/")" />
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="~/Content/angular-material.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/doc.css" rel="stylesheet" />
+    <title ng-bind="title + ' &mdash; Easy Ticket'">Easy Ticket</title>
+</head>
+<body>
+    <div ng-controller="AppCtrl" layout="row" style="height:100vh;" ng-cloak>
+        <md-sidenav class="md-sidenav-left site-sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+            <header class="nav-header">
+                <a ng-href="/" class="docs-logo" href="/">
+                    <img src="~/Content/Image/angular-logo.svg" alt="logo">
+                    <h1 class="docs-logotype md-heading ng-isolate-scope">Welcome {{User}}!</h1>
+                </a>
+            </header>
+            <md-content style="overflow-wrap:break-word">
+                <md-list flex>
+                    <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>android</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Android</h3>
+                            <p>Operating System</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>accessibility</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Admin</h3>
+                            <p>accessibility</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>assignment ind</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Website</h3>
+                            <p>bug report</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>android</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Android</h3>
+                            <p>Operating System</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>accessibility</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Admin</h3>
+                            <p>accessibility</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-2-line" ng-click="null">
+                        <md-icon>assignment ind</md-icon>
+                        <div class="md-list-item-text" layout="column">
+                            <h3>Website</h3>
+                            <p>bug report</p>
+                        </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-content>
+            <md-subheader class="md-no-sticky">&copy; @DateTime.Now.Year - Easy Ticket</md-subheader>
+        </md-sidenav>
+        <div layout="column" tabindex="-1" role="main" flex="" class="layout-column flex">
+            <md-toolbar class="md-hue-2 site-content-toolbar" md-whiteframe="2">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Settings" hide-gt-md="">
+                        <i class="material-icons" ng-click="toggleLeft()">menu</i>
+                    </md-button>
+
+                    <h2 flex md-truncate ng-bind="title">EASY TICKET</h2>
+                    <md-menu md-offset="0 -7">
+                        <md-button ng-href="Home" class="md-fab md-mini md-warn md-hue-2" aria-label="Profile" ng-click="$mdMenu.open($event)">
+                            <md-tooltip md-direction="top" md-delay="300">Profile</md-tooltip>
+                            <i class="material-icons" style="padding:5px 0 0 0">person</i>
+                        </md-button>
+                        <md-menu-content width="2">
+                            <md-menu-item ng-repeat="item in [{Display: 'New User', Model: 'Sign Up'}, {Display: 'Existing User', Model: 'Sign In'}]">
+                                <md-button ng-click="showAdvanced({index: $index, to_do: item.Model})">{{item.Display}}</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </md-toolbar>
+            <md-progress-linear class="md-warn" md-mode="indeterminate" ng-disabled="PageLoaded"></md-progress-linear>
+            @RenderBody()
+            <div aria-label="Fab Menu">
+                <md-fab-speed-dial class="md-scale md-fab-bottom-right docs-scroll-fab md-ink-ripple scrolling" md-open="isOpen" md-direction="up" ng-class="{ 'md-hover-full': true }" ng-mouseleave="CloseMenu()">
+                    <md-fab-trigger>
+                        <md-button class="md-fab md-mini md-hue-2" ng-mouseenter="isOpen=true">
+                            <md-icon>menu</md-icon>
+                        </md-button>
+                    </md-fab-trigger>
+                    <md-fab-actions>
+                        <md-button aria-label="download" class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                                Download
+                            </md-tooltip>
+                            <md-icon>file_download</md-icon>
+                        </md-button>
+                        <md-button aria-label="copy to clipboard" class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                                Copy to Clipboard
+                            </md-tooltip>
+                            <md-icon>content_copy</md-icon>
+                        </md-button>
+                        <md-button aria-label="share link" class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="left" md-visible="tooltipVisible" md-autohide="false">
+                                Share Link
+                            </md-tooltip>
+                            <md-icon>share</md-icon>
+                        </md-button>
+                    </md-fab-actions>
+                </md-fab-speed-dial>
+            </div>
+        </div>
+    </div>
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/angular-aria.js"></script>
+    <script src="~/Scripts/angular-messages.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="~/Scripts/angular-material.js"></script>
+
+    <!-- Easy Ticket WebApp bootstrap  -->
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/Controllers/HomeController.js"></script>
+    <!--Add any ng template-->
+    <!--<script type="text/ng-template" id="one.html">
+        Content of the template.
+    </script>-->
+</body>
+</html>

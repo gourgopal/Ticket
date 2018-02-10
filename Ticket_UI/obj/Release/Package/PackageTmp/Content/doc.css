@@ -1,0 +1,141 @@
+﻿h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+h1 {
+    font-size: 3.400rem;
+    font-weight: 400;
+    line-height: 4rem;
+}
+
+.site-sidenav, .site-sidenav.md-locked-open-add-active, .site-sidenav.md-locked-open {
+    width: 272px;
+    min-width: 272px;
+    max-width: 272px;
+}
+
+.md-fab.docs-scroll-fab {
+    position: fixed !important;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+}
+.docs-scroll-fab.scrolling {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.hint {
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    color: grey;
+}
+
+.site-content-toolbar {
+    background: #f6f6f6 !important;
+    color: #202020 !important;
+    z-index: 3;
+}
+
+.docs-menu, .docs-menu ul {
+    list-style: none;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+md-sidenav ul {
+    list-style: none;
+}
+
+/*.ng-scope {
+    height: 100%;
+}*/
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-header {
+    background-color: #106CC8;
+    background: -webkit-linear-gradient(#185694, #106cc8);
+    background: linear-gradient(#185694, #106cc8);
+    border-bottom: 1px solid #267ED5;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.docs-menu > li {
+    border-bottom: 1px solid #267ED5;
+}
+
+.docs-menu li {
+    margin: 0;
+}
+
+.menu-heading {
+    display: block;
+    line-height: 32px;
+    text-align: left;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.54);
+}
+
+.docs-toolbar-tools .md-button md-icon {
+    color: #666 !important;
+    fill: #666 !important;
+}
+
+.docs-logotype {
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.docs-logo {
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 0 0 16px;
+    margin: 0 auto;
+}
+
+    .docs-logo > img {
+        height: 150px;
+        width: auto;
+        display: block;
+        -webkit-transform-origin: 50% 0;
+        transform-origin: 50% 0;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+a {
+    text-decoration: none;
+    font-weight: 400;
+    -webkit-transition: border-bottom 0.35s;
+    transition: border-bottom 0.35s;
+}
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
